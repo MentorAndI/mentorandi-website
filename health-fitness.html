@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leo — Health &amp; Fitness Mentor | Mentor And I</title>
+<meta name="description" content="Leo is the AI Health &amp; Fitness Mentor on Mentor And I. Build sustainable training, food and energy habits that fit real life instead of a perfect week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root{--h:#8E6E52;
+    --paper:#F4EDE1;--band:#EFE6D4;--surface:#FFFFFF;--surface-warm:#FBF7EF;
+    --ink:#201F1B;--text:#4A4539;--text-dim:#6A6456;--text-faint:#8A8372;
+    --line:rgba(32,31,27,0.12);--line-strong:rgba(32,31,27,0.20);--me:#2C2A24;
+    --ease:cubic-bezier(0.16,1,0.3,1);--container:1080px;--pad-x:clamp(1.4rem,5vw,3rem);}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--text);font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .serif{font-family:'Newsreader',Georgia,serif}
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 var(--pad-x)}
+  a{color:inherit;text-decoration:none}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--h);display:inline-flex;gap:.6em;align-items:center}
+  .persona-badge{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);border:1px solid var(--line-strong);border-radius:100px;padding:.28rem .7rem}
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--paper) 82%,transparent);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:.6rem;font-family:'Newsreader',serif;font-size:1.15rem;color:var(--ink)}
+    .nav-actions{display:flex;align-items:center;gap:1.3rem;font-size:.9rem}
+  .nav-actions .back{color:var(--text-dim)} .nav-actions .back:hover{color:var(--ink)}
+  .nav-cta{padding:.55rem 1.1rem;border-radius:100px;background:#BC5B38;color:#fff;font-weight:600;font-size:.85rem;transition:.3s var(--ease);white-space:nowrap;box-shadow:0 6px 16px rgba(188,91,56,0.28)}
+  .nav-cta:hover{background:#9E4A2C}
+  .nav-logo{height:30px;width:auto;display:block}
+
+  .hero{padding:8.5rem 0 3.5rem}
+  .hero-grid{display:grid;grid-template-columns:1fr .82fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+  .hero-copy .eyebrow{margin-bottom:1.1rem}
+  .hero-copy h1{font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(2.7rem,6vw,4.4rem);line-height:1;letter-spacing:-.02em;color:var(--ink)}
+  .hero-copy h1 .rl{color:var(--h)}
+  .hero-role{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb,var(--h) 72%,var(--text-faint));margin-top:.9rem}
+  .hero-promise{font-size:1.2rem;line-height:1.55;color:var(--text);margin:1.5rem 0 1.6rem;max-width:38ch}
+  .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.9rem}
+  .tag{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--text-dim);background:color-mix(in srgb,var(--h) 12%,#fff);border:1px solid color-mix(in srgb,var(--h) 30%,transparent);border-radius:100px;padding:.38rem .85rem}
+  .hero-actions{display:flex;align-items:center;gap:1.3rem;flex-wrap:wrap}
+  .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--h);color:#fff;font-weight:600;padding:.85rem 1.6rem;border-radius:100px;transition:.3s var(--ease);box-shadow:0 8px 24px -12px color-mix(in srgb,var(--h) 70%,transparent)}
+  .btn-primary:hover{transform:translateY(-2px)}
+  .link-quiet{color:var(--text-dim);font-size:.92rem;border-bottom:1px solid var(--line-strong);padding-bottom:2px}
+  .link-quiet:hover{color:var(--ink)}
+  .portrait-wrap{position:relative}
+  .portrait-wrap::before{content:"";position:absolute;inset:-8%;background:radial-gradient(60% 60% at 50% 35%,color-mix(in srgb,var(--h) 26%,transparent),transparent 70%);filter:blur(10px);z-index:0}
+  .portrait{position:relative;z-index:1;border-radius:22px;overflow:hidden;border:1px solid color-mix(in srgb,var(--h) 30%,var(--line));box-shadow:0 30px 60px -30px rgba(32,31,27,.45);aspect-ratio:1122/1402}
+  .portrait img{width:100%;height:100%;object-fit:cover;display:block}
+  .portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,color-mix(in srgb,var(--h) 20%,transparent));mix-blend-mode:multiply;pointer-events:none}
+  .p-chip{position:absolute;z-index:2;left:14px;bottom:14px;display:flex;align-items:center;gap:.5rem;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:100px;padding:.4rem .8rem;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:var(--text-dim)}
+  .p-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--h)}
+
+  section{padding:3rem 0}
+  .band-sec{background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .sec-label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:1.3rem}
+  .lead-grid{display:grid;grid-template-columns:.6fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
+  .lead-grid h2{font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.1;color:var(--ink);max-width:16ch}
+  .lead-grid .body p{font-size:1.06rem;color:var(--text);margin-bottom:1rem} .lead-grid .body p:last-child{margin-bottom:0}
+  .checklist{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.5rem 2rem;max-width:760px}
+  .checklist li{position:relative;padding-left:1.5rem;color:var(--text);font-size:1.02rem;line-height:1.5}
+  .checklist li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--h)}
+  .methods{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:820px}
+  .method{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.3rem 1.4rem;border-top:3px solid var(--h)}
+  .method h4{font-size:1.18rem;font-weight:500;color:var(--ink);margin-bottom:.4rem}
+  .method p{color:var(--text);font-size:1rem}
+  .gets{list-style:none;display:grid;gap:.55rem;max-width:640px}
+  .gets li{position:relative;padding-left:1.7rem;font-size:1.05rem;color:var(--text)}
+  .gets li::before{content:"→";position:absolute;left:0;color:var(--h);font-weight:700}
+  .asks{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.7rem;max-width:820px}
+  .ask-q{background:var(--surface-warm);border:1px solid var(--line);border-left:3px solid color-mix(in srgb,var(--h) 55%,var(--line));border-radius:12px;padding:.8rem 1rem;font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:1.05rem;color:var(--ink)}
+  .boundary{max-width:66ch;font-size:.95rem;color:var(--text-dim);background:var(--surface-warm);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.3rem;border-left:3px solid color-mix(in srgb,var(--h) 45%,var(--line-strong))}
+  .memory{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:center;max-width:760px}
+  .memory .mk{width:46px;height:46px;border-radius:13px;background:color-mix(in srgb,var(--h) 16%,#fff);border:1px solid color-mix(in srgb,var(--h) 30%,transparent);display:flex;align-items:center;justify-content:center}
+  .memory .mk span{width:14px;height:14px;border-radius:50%;background:var(--h);box-shadow:0 0 0 5px color-mix(in srgb,var(--h) 15%,transparent)}
+  .memory p{font-size:1.05rem;color:var(--text)}
+  .memory b{color:var(--ink);font-weight:600}
+
+  .others{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+  .other{display:flex;align-items:center;gap:.7rem;padding:.55rem .7rem;border:1px solid var(--line);border-radius:14px;background:var(--surface-warm);transition:.28s var(--ease)}
+  .other:hover{border-color:color-mix(in srgb,var(--h) 45%,transparent);transform:translateY(-2px)}
+  .other-face{flex:none;width:44px;height:55px;object-fit:cover;border-radius:9px;border:1px solid color-mix(in srgb,var(--h) 28%,var(--line))}
+  .other-txt b{color:var(--ink);font-weight:600;font-size:.95rem;display:block}
+  .other-txt span{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint)}
+
+  .final{text-align:center;padding:5rem 0 5.5rem}
+  .final h2{font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(2rem,4vw,3rem);color:var(--ink);max-width:18ch;margin:0 auto 1.3rem}
+  .final p{color:var(--text-dim);max-width:46ch;margin:0 auto 2rem}
+  footer{border-top:1px solid var(--line);padding:2.4rem 0;color:var(--text-faint);font-size:.85rem}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;align-items:center}
+  .foot-mono{font-family:'Space Mono',monospace;font-size:.64rem;letter-spacing:.06em}
+  @media(max-width:820px){
+    .hero-grid{grid-template-columns:1fr;gap:2.4rem} .portrait-wrap{max-width:340px}
+    .lead-grid,.methods{grid-template-columns:1fr;gap:1rem} .lead-grid h2{max-width:none}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="index.html" aria-label="Mentor And I home"><img class="nav-logo" src="images/MentorAndIlogo.png" alt="Mentor And I" height="30" width="150"></a>
+  <div class="nav-actions"><a class="back" href="index.html#mentors">← All mentors</a><a class="nav-cta" href="index.html#start">Start free</a></div>
+</div></nav>
+
+<header class="hero"><div class="wrap hero-grid">
+  <div class="hero-copy">
+    <span class="eyebrow">Mentor And I · <span class="persona-badge">AI mentor persona</span></span>
+    <h1 class="serif">Meet <span class="rl">Leo</span>.</h1>
+    <div class="hero-role">Health &amp; Fitness Mentor</div>
+    <p class="hero-promise">Leo helps you build training, food and energy habits that fit real life — sustainable progress without extreme rules.</p>
+    <div class="tags"><span class="tag">training</span><span class="tag">nutrition</span><span class="tag">consistency</span></div>
+    <div class="hero-actions">
+      <a class="btn-primary" href="index.html#start">Start with Leo <span>→</span></a>
+      <a class="link-quiet" href="index.html#mentors">See all mentors</a>
+    </div>
+  </div>
+  <div class="portrait-wrap">
+    <div class="portrait"><img src="images/mentors/profiles/leo-health-fitness-mentor.webp" alt="Leo, Health &amp; Fitness Mentor portrait" width="1000" height="1250"></div>
+    <div class="p-chip"><span class="dot"></span> remembers you</div>
+  </div>
+</div></header>
+
+<section><div class="wrap lead-grid">
+  <h2 class="serif">Who Leo is for</h2>
+  <div class="body"><p>Leo is for when you want to improve your health, build strength, move more, eat better, or get back into rhythm — without turning your life into a strict fitness project. He’s practical and concrete: when you ask for a plan, he gives one.</p></div>
+</div></section>
+
+<section class="band-sec"><div class="wrap">
+  <div class="sec-label">What Leo helps with</div>
+  <ul class="checklist"><li>Simple strength-training plans</li><li>Walking and cardio routines</li><li>Sustainable everyday habits</li><li>Meal structure and protein-first eating</li><li>Consistency after missed days</li><li>Energy and sleep-supporting routines</li><li>Reducing all-or-nothing dieting</li><li>Restarting without punishment</li></ul>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-label">How Leo works</div>
+  <div class="methods"><div class="method"><h4 class="serif">Repeatability first</h4><p>The workout you’ll actually do beats the perfect one you skip. Leo builds simple weekly plans, realistic meal structures, and minimum fallback rules for busy days.</p></div><div class="method"><h4 class="serif">No extremes</h4><p>No starvation days, no fat-burner claims, no shame, no punishment.</p></div></div>
+</div></section>
+
+<section class="band-sec"><div class="wrap">
+  <div class="sec-label">What you get out of it</div>
+  <ul class="gets"><li>Clearer training structure</li><li>More sustainable food habits</li><li>Less all-or-nothing thinking</li><li>Practical progression</li><li>A plan that adapts to real life</li><li>A way back after missed workouts or off-plan meals</li></ul>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-label">Try asking Leo</div>
+  <div class="asks"><div class="ask-q">“Make me a simple weekly training plan.”</div><div class="ask-q">“Should I do strength training or walking?”</div><div class="ask-q">“Help me build a sustainable meal structure.”</div><div class="ask-q">“What do I do if I missed a week?”</div><div class="ask-q">“Make a workout I can do in 30 minutes.”</div></div>
+</div></section>
+
+<section class="band-sec"><div class="wrap">
+  <div class="sec-label">Important boundary</div>
+  <p class="boundary">Leo is an AI mentor for everyday fitness, nutrition habits and consistency — not a doctor, dietitian, physiotherapist or eating-disorder specialist. He doesn’t give clinical injury rehab, extreme fasting, supplement claims or medical advice.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-label">One shared memory</div>
+  <div class="memory"><div class="mk"><span></span></div>
+    <p>Every mentor shares the same memory of you. Start with <b>Leo</b> and bring in any of the others whenever you need them — you never have to explain yourself from scratch again.</p>
+  </div>
+</div></section>
+
+<section class="band-sec"><div class="wrap">
+  <div class="sec-label">Meet the other mentors</div>
+  <div class="others"><a class="other" href="life.html" style="--h:#BC5B38"><img class="other-face" src="images/mentors/cards/marcus-life-mentor.webp" alt="Marcus, Life Mentor portrait" loading="lazy" width="44" height="55"><span class="other-txt"><b>Marcus</b><span>Life Mentor</span></span></a><a class="other" href="adhd.html" style="--h:#C68A38"><img class="other-face" src="images/mentors/cards/adrian-adhd-mentor.webp" alt="Adrian, ADHD Mentor portrait" loading="lazy" width="44" height="55"><span class="other-txt"><b>Adrian</b><span>ADHD Mentor</span></span></a><a class="other" href="relationship.html" style="--h:#B0654F"><img class="other-face" src="images/mentors/cards/celine-relationship-mentor.webp" alt="Celine, Relationship Mentor portrait" loading="lazy" width="44" height="55"><span class="other-txt"><b>Celine</b><span>Relationship Mentor</span></span></a><a class="other" href="stress-burnout.html" style="--h:#A0637A"><img class="other-face" src="images/mentors/cards/victor-stress-burnout-mentor.webp" alt="Victor, Stress &amp; Burnout Mentor portrait" loading="lazy" width="44" height="55"><span class="other-txt"><b>Victor</b><span>Stress &amp; Burnout Mentor</span></span></a><a class="other" href="parenting.html" style="--h:#9A7B3A"><img class="other-face" src="images/mentors/cards/suzan-parenting-mentor.webp" alt="Suzan, Parenting Mentor portrait" loading="lazy" width="44" height="55"><span class="other-txt"><b>Suzan</b><span>Parenting Mentor</span></span></a><a class="other" href="focus.html" style="--h:#C56B47"><img class="other-face" src="images/mentors/cards/elias-focus-mentor.webp" alt="Elias, Focus Mentor portrait" loading="lazy" width="44" height="55"><span class="other-txt"><b>Elias</b><span>Focus Mentor</span></span></a><a class="other" href="confidence.html" style="--h:#B58A2E"><img class="other-face" src="images/mentors/cards/joyce-confidence-mentor.webp" alt="Joyce, Confidence Mentor portrait" loading="lazy" width="44" height="55"><span class="other-txt"><b>Joyce</b><span>Confidence Mentor</span></span></a></div>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2 class="serif">Start with Leo. Grow with all eight.</h2>
+  <p>One mentor who remembers, seven more who share the memory. Add any of them whenever life asks.</p>
+  <a class="btn-primary" href="index.html#start">Start with Leo <span>→</span></a>
+</div></section>
+
+<footer><div class="wrap">
+  <span>© 2026 Mentor And I · AI mentor personas</span>
+  <span class="foot-mono">LIFE · ADHD · RELATIONSHIP · STRESS · PARENTING · HEALTH · FOCUS · CONFIDENCE</span>
+</div></footer>
+</body>
+</html>
