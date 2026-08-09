@@ -371,6 +371,16 @@
   .mc-tag{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.02em;color:var(--text-dim);background:color-mix(in srgb,var(--h) 10%,#fff);border:1px solid color-mix(in srgb,var(--h) 26%,transparent);border-radius:100px;padding:.28rem .7rem}
   .mn-card.mc-note{justify-content:center}
   .mn-card.mc-note h3{color:var(--ink)}
+
+  /* insights */
+  .ins-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.8rem}
+  .ins-card{display:flex;flex-direction:column;gap:.5rem;padding:1.25rem 1.35rem;background:var(--surface);border:1px solid var(--line);border-radius:16px;text-decoration:none;transition:.28s var(--ease);border-top:3px solid color-mix(in srgb,var(--h) 65%,transparent)}
+  .ins-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--h) 45%,transparent);box-shadow:0 18px 40px -28px rgba(32,31,27,.5)}
+  .ins-kicker{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--h)}
+  .ins-card h3{font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:1.16rem;line-height:1.25;color:var(--ink)}
+  .ins-card p{font-size:.94rem;color:var(--text-dim);line-height:1.55;margin:0}
+  .ins-by{margin-top:auto;padding-top:.6rem;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint)}
+  .ins-foot{text-align:center;margin-top:1.6rem;font-size:.95rem;color:var(--text-dim)}
 </style>
 </head>
 <body>
@@ -382,6 +392,7 @@
       <a href="#mentors">Mentors</a>
       <a href="#why">Why a mentor</a>
       <a href="#how">How it works</a>
+      <a href="#insights">Insights</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -395,6 +406,7 @@
   <a href="#mentors">Mentors</a>
   <a href="#why">Why a mentor</a>
   <a href="#how">How it works</a>
+  <a href="#insights">Insights</a>
   <a href="#pricing">Pricing</a>
   <a href="#faq">FAQ</a>
   <a href="#start" class="btn btn-primary">Start free <span class="arr">→</span></a>
@@ -661,6 +673,44 @@
       </div>
       <p class="demo-note">Personal, because it remembers. <button class="replay" data-replay="life">replay ↻</button></p>
     </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section class="section" id="insights">
+  <div class="section-head reveal">
+    <span class="eyebrow">Insights</span>
+    <h2>Written by the mentors.</h2>
+    <p class="intro">Short pieces on the things people actually get stuck on — with the myths taken apart and the sources named, so you can check the claim yourself.</p>
+  </div>
+  <div class="wrap">
+    <div class="ins-grid reveal">
+      <a class="ins-card" href="articles/how-long-to-form-a-habit.html" style="--h:var(--m1)">
+        <span class="ins-kicker">Myths</span>
+        <h3>The 21-day habit rule isn't real</h3>
+        <p>It came from a plastic surgeon's memoir, not a study — and the number that replaced it is less useful than the finding nobody quotes.</p>
+        <span class="ins-by">From Life Mentor</span>
+      </a>
+      <a class="ins-card" href="articles/waiting-for-motivation.html" style="--h:var(--m1)">
+        <span class="ins-kicker">Myths</span>
+        <h3>Waiting until you feel motivated is why it never happens</h3>
+        <p>We treat motivation as the thing that comes first. Mostly it arrives second, and only if you go and fetch it.</p>
+        <span class="ins-by">From Life Mentor</span>
+      </a>
+      <a class="ins-card" href="articles/habit-stacking.html" style="--h:var(--m1)">
+        <span class="ins-kicker">Technique</span>
+        <h3>Habit stacking: attach the new thing to something you already do</h3>
+        <p>The name is recent. The mechanism underneath has been tested on more than eight thousand people.</p>
+        <span class="ins-by">From Life Mentor</span>
+      </a>
+      <a class="ins-card" href="articles/mentor-coach-or-therapist.html" style="--h:var(--m1)">
+        <span class="ins-kicker">Why a mentor</span>
+        <h3>Mentor, coach or therapist — which one do you need?</h3>
+        <p>They overlap enough to be confusing and differ enough that picking the wrong one wastes months.</p>
+        <span class="ins-by">From Life Mentor</span>
+      </a>
+    </div>
+    <p class="ins-foot reveal">More from the other seven mentors, coming soon.</p>
   </div>
 </section>
 
