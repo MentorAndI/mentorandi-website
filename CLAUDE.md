@@ -4,7 +4,28 @@ Dette er et statisk HTML-marketing-site.
 
 ## Deploy-flow
 
-GitHub → GreenGeeks via cPanel Git Version Control. René trykker "Update" i cPanel efter push.
+Verificeret 9. august 2026 ved direkte inspektion af serveren.
+
+**Deploy sker via SSH/rsync fra denne maskine.** Der er *intet* git-repo på serveren — cPanel Git
+Version Control er ikke sat op for mentorandi. Filerne er tidligere lagt op manuelt (zip + udpak).
+GitHub er kilden til sandhed; serveren modtager kun filer.
+
+- SSH-alias: `greengeeks` (defineret i `~/.ssh/config`, nøgle `~/.ssh/greengeeks_deploy`)
+- Konto: `stepston` på `mentorandi.com` (107.6.151.38), port 22, shell `/bin/bash`
+- **Dokumentrod for mentorandi.com: `/home/stepston/public_html/mentorandi/`**
+  Bekræftet ved at md5 af `index.html` er identisk lokalt, på serveren og på det live site.
+
+**FARE — delt konto.** `stepston` hoster 40+ domæner. `~/public_html/` er dokumentrod for
+`stepstonecapital.com` og indeholder en WordPress-installation. Deploy må ALDRIG ramme
+`~/public_html/` direkte — kun undermappen `mentorandi/`. Kør aldrig `rsync --delete` uden at have
+verificeret stien i samme kommando.
+
+Beslægtede docroots på samme konto: `auth.mentorandi.com`, `staging.mentorandi.com`.
+
+SSL: gyldigt Let's Encrypt-wildcard `*.mentorandi.com` til 1. oktober 2026. (cPanel viser
+"Expired" for kontoens primærdomæne stepstonecapital.com — det er ikke dette site.)
+
+Øvrige regler:
 
 - Hold `index.html` i roden, `images/` ved siden af.
 - Omdøb aldrig eksisterende filer.
