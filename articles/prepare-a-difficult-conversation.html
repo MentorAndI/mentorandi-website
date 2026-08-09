@@ -99,8 +99,23 @@
 <body>
 
 <nav><div class="wrap">
-  <a href="../index.html" aria-label="Mentor And I home"><img class="nav-logo" src="../images/MentorAndIlogo.png" alt="Mentor And I" height="30" width="150"></a>
-  <div class="nav-actions"><a class="back" href="../relationship.html">← Relationship Mentor</a><a class="nav-cta" href="../index.html#start">Start free</a></div>
+  <div class="nav-left">
+    <a class="brand" href="../index.html" aria-label="Mentor And I home"><img class="nav-logo" src="../images/MentorAndIlogo.png" alt="Mentor And I" height="30" width="150"></a>
+    <a class="nav-back" href="../relationship.html">← Relationship Mentor</a>
+  </div>
+  <input class="nav-check" id="navtoggle" type="checkbox" tabindex="-1" aria-hidden="true">
+  <div class="nav-menu">
+    <a href="../index.html#mentors">Mentors</a>
+    <a href="../index.html#why">Why a mentor</a>
+    <a href="../index.html#how">How it works</a>
+    <a href="index.html">Insights</a>
+    <a href="../index.html#pricing">Pricing</a>
+    <a href="../index.html#faq">FAQ</a>
+  </div>
+  <div class="nav-actions">
+    <a class="nav-cta" href="../index.html#start">Start free</a>
+    <label class="nav-burger" for="navtoggle" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></label>
+  </div>
 </div></nav>
 
 <header class="a-head"><div class="wrap">
