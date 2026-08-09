@@ -41,6 +41,10 @@ nav a{text-decoration:none}
     .nav-menu a{font-family:'Newsreader',Georgia,serif;font-size:1.2rem;color:var(--ink);padding:.9rem 0;border-bottom:1px solid var(--line)}
   }
   @media (max-width:420px){.nav-cta{padding:.5rem .85rem;font-size:.8rem}}
+  @media (max-width:1040px){
+    nav .wrap{position:relative}
+    .nav-actions .nav-cta{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+  }
 
 
 /* ---- article head ---- */

@@ -208,25 +208,7 @@
   .personal .microsafe{margin-top:1.5rem;font-size:.82rem;color:var(--text-faint);border-left:2px solid var(--accent-line);padding-left:.9rem;max-width:44ch;line-height:1.5}
 
   /* ---------- PRICING ---------- */
-  .price-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;margin-top:3.2rem;align-items:stretch}
-  .pc .cred{font-family:'Space Mono',monospace;font-size:.64rem;letter-spacing:.02em;color:var(--accent);margin:.85rem 0 1.5rem;padding-top:.85rem;border-top:1px solid var(--line);white-space:nowrap}
-  .pc .best{font-size:.8rem;color:var(--text-faint);margin:-.6rem 0 1.2rem;line-height:1.45}
-  .pc .btn{margin-top:auto}
-  .cred-note{text-align:center;max-width:56ch;margin:1.7rem auto 0;font-size:.88rem;color:var(--text-dim);line-height:1.6}
-  .packs{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-top:1.1rem}
-  .pack{background:var(--surface);border:1px solid var(--line);border-radius:100px;padding:.5rem 1.1rem;font-size:.85rem;color:var(--text)}
-  .pack b{font-family:'Newsreader',serif;font-weight:540;color:var(--ink)}
-  .company-card{margin-top:2.6rem;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:18px;padding:2rem 1.9rem;display:grid;grid-template-columns:1.15fr 1fr;gap:2rem;align-items:center}
-  .company-card .pt{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-  .company-card h3{font-family:'Newsreader',serif;font-weight:500;font-size:1.6rem;color:var(--ink);margin:.5rem 0 .6rem;line-height:1.2}
-  .company-card p{font-size:.92rem;color:var(--text-dim);line-height:1.6}
-  .company-card .price{font-family:'Newsreader',serif;font-size:2.2rem;font-weight:540;color:var(--ink);letter-spacing:-.02em;line-height:1}
-  .company-card .price small{font-family:'Hanken Grotesk',sans-serif;font-size:.85rem;color:var(--text-faint);font-weight:400}
-  .company-card ul{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin:1rem 0 1.4rem}
-  .company-card li{font-size:.88rem;color:var(--text);display:flex;gap:.55rem;align-items:flex-start}
-  .company-card li::before{content:"✓";color:var(--accent);font-weight:700;flex:none}
-  .privacy-line{font-size:.82rem;color:var(--text-faint);border-left:2px solid var(--line-strong);padding-left:.8rem;margin-top:1.1rem;line-height:1.55}
-  @media (max-width:900px){.company-card{grid-template-columns:1fr;gap:1.4rem}}
+  .price-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3.2rem}
   .pc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.9rem 1.7rem;display:flex;flex-direction:column;transition:.4s var(--ease)}
   .pc:hover{transform:translateY(-5px);box-shadow:0 24px 50px -28px rgba(32,31,27,0.34)}
   .pc.feat{border-color:var(--accent);background:linear-gradient(170deg,color-mix(in srgb,var(--accent) 12%,#fff),var(--surface));box-shadow:0 26px 56px -26px rgba(188,91,56,0.5)}
@@ -238,10 +220,8 @@
   .pc ul{list-style:none;margin:1.2rem 0 1.6rem;display:flex;flex-direction:column;gap:.6rem}
   .pc li{font-size:.88rem;color:var(--text);display:flex;gap:.55rem;align-items:flex-start}
   .pc li::before{content:"✓";color:var(--accent);font-weight:700;flex:none}
-  .pc li.no{color:var(--text-faint)}
-  .pc li.no::before{content:"–";color:var(--text-faint);font-weight:400}
   .pc .btn{margin-top:auto;width:100%;justify-content:center}
-  .pc .flag{align-self:flex-start;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:100px;padding:.24rem .65rem;margin:.8rem 0 0;box-shadow:0 6px 14px -4px var(--accent)}
+  .pc .flag{align-self:flex-start;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:100px;padding:.24rem .65rem;margin-bottom:1rem;box-shadow:0 6px 14px -4px var(--accent)}
   .price-note{text-align:center;margin-top:1.6rem;font-family:'Space Mono',monospace;font-size:.72rem;color:var(--text-faint)}
 
   /* ---------- TRUST ---------- */
@@ -303,7 +283,7 @@
     .steps,.exp-grid{grid-template-columns:1fr;gap:1rem}
     .stepline{display:none}
     .mn-cards{grid-template-columns:1fr}
-    .price-cards{grid-template-columns:repeat(2,1fr)}
+    .price-cards{grid-template-columns:1fr}
     .shared{flex-direction:column;align-items:flex-start}
     .mobile-menu.open{display:block;position:fixed;inset:0;top:0;z-index:59;background:rgba(244,237,225,0.98);backdrop-filter:blur(16px);padding:6rem var(--pad-x) 2rem}
     .mobile-menu a{display:block;font-family:'Newsreader',serif;font-size:1.6rem;padding:.9rem 0;border-bottom:1px solid var(--line);color:var(--ink)}
@@ -313,7 +293,6 @@
     .hero h1{font-size:clamp(2.2rem,9vw,3rem)}
     .demo-card{max-width:100%}
     .vals,.trust-grid{grid-template-columns:1fr}
-    .price-cards{grid-template-columns:1fr}
     .ft-top{flex-direction:column}
   }
   @media (prefers-reduced-motion: reduce){
@@ -536,106 +515,8 @@
   {
    "@type": "SiteNavigationElement",
    "position": 14,
-   "name": "Charisma Mentor",
+   "name": "Confidence Mentor",
    "url": "https://mentorandi.com/confidence.html"
-  },
-  {
-   "@type": "Product",
-   "@id": "https://mentorandi.com/#product",
-   "name": "Mentor And I",
-   "description": "Eight AI mentors sharing one continuous memory of you, across life, ADHD, relationships, stress and burnout, parenting, health and fitness, focus and charisma.",
-   "brand": {
-    "@id": "https://mentorandi.com/#org"
-   },
-   "url": "https://mentorandi.com/#pricing",
-   "image": "https://mentorandi.com/images/og/mentor-life.jpg",
-   "offers": [
-    {
-     "@type": "Offer",
-     "name": "Free Trial",
-     "price": "0",
-     "priceCurrency": "USD",
-     "availability": "https://schema.org/InStock",
-     "url": "https://mentorandi.com/#pricing",
-     "description": "Life Mentor only, limited starter credits, no card required."
-    },
-    {
-     "@type": "Offer",
-     "name": "Single Mentor",
-     "price": "19",
-     "priceCurrency": "USD",
-     "availability": "https://schema.org/InStock",
-     "url": "https://mentorandi.com/#pricing",
-     "description": "One specialist mentor, 800 mentor credits per month. Your mentor remembers your goals, patterns and progress.",
-     "priceSpecification": {
-      "@type": "UnitPriceSpecification",
-      "price": "19",
-      "priceCurrency": "USD",
-      "referenceQuantity": {
-       "@type": "QuantitativeValue",
-       "value": 1,
-       "unitCode": "MON"
-      }
-     }
-    },
-    {
-     "@type": "Offer",
-     "name": "Mentor Plus",
-     "price": "39",
-     "priceCurrency": "USD",
-     "availability": "https://schema.org/InStock",
-     "url": "https://mentorandi.com/#pricing",
-     "description": "Access to all main mentors, 2,000 mentor credits per month, occasional deep mentor sessions for complex situations.",
-     "priceSpecification": {
-      "@type": "UnitPriceSpecification",
-      "price": "39",
-      "priceCurrency": "USD",
-      "referenceQuantity": {
-       "@type": "QuantitativeValue",
-       "value": 1,
-       "unitCode": "MON"
-      }
-     }
-    },
-    {
-     "@type": "Offer",
-     "name": "Premium",
-     "price": "69",
-     "priceCurrency": "USD",
-     "availability": "https://schema.org/InStock",
-     "url": "https://mentorandi.com/#pricing",
-     "description": "Access to all main mentors, 5,000 mentor credits per month, more deep mentor sessions, long-term programmes and in-depth plans.",
-     "priceSpecification": {
-      "@type": "UnitPriceSpecification",
-      "price": "69",
-      "priceCurrency": "USD",
-      "referenceQuantity": {
-       "@type": "QuantitativeValue",
-       "value": 1,
-       "unitCode": "MON"
-      }
-     }
-    },
-    {
-     "@type": "Offer",
-     "name": "Company Stress Mentor",
-     "price": "125",
-     "priceCurrency": "USD",
-     "availability": "https://schema.org/InStock",
-     "url": "https://mentorandi.com/#pricing",
-     "description": "Stress & Burnout Mentor for every employee, per user per month. Private employee conversations, anonymised company-level insight.",
-     "priceSpecification": {
-      "@type": "UnitPriceSpecification",
-      "price": "125",
-      "priceCurrency": "USD",
-      "referenceQuantity": {
-       "@type": "QuantitativeValue",
-       "value": 1,
-       "unitCode": "MON"
-      }
-     }
-    }
-   ]
   }
  ]
 }
@@ -761,9 +642,9 @@
   <span class="mn-cta">Meet Elias <span class="arr">→</span></span>
 </a>
 <a class="mn-card" href="confidence.html" style="--h:#B58A2E">
-  <div class="mc-head"><img class="mc-face" src="images/mentors/cards/joyce-confidence-mentor.webp" alt="Joyce, Charisma Mentor portrait" loading="lazy" width="60" height="75"><div class="mc-id"><h3 class="serif">Joyce</h3><span class="role">Charisma Mentor</span></div></div>
-  <p>Learn presence, warmth, confident speaking and better conversations through practical coaching and exercises.</p>
-  <div class="mc-tags"><span class="mc-tag">presence</span><span class="mc-tag">body language</span><span class="mc-tag">storytelling</span></div>
+  <div class="mc-head"><img class="mc-face" src="images/mentors/cards/joyce-confidence-mentor.webp" alt="Joyce, Confidence Mentor portrait" loading="lazy" width="60" height="75"><div class="mc-id"><h3 class="serif">Joyce</h3><span class="role">Confidence Mentor</span></div></div>
+  <p>Work with self-doubt, see your own evidence more clearly, and build confidence through grounded action.</p>
+  <div class="mc-tags"><span class="mc-tag">self-doubt</span><span class="mc-tag">courage</span><span class="mc-tag">self-trust</span></div>
   <span class="mn-cta">Meet Joyce <span class="arr">→</span></span>
 </a>
       <div class="mn-card mc-note" style="--h:var(--m2)">
@@ -977,76 +858,35 @@
   <div class="aura" aria-hidden="true"></div>
   <div class="section-head reveal">
     <span class="eyebrow">Pricing</span>
-    <h2>Choose the depth of support you need.</h2>
-    <p class="intro">Begin free with the Life Mentor and feel what being remembered is like. Move up when you want specialist mentors, deeper sessions and a memory that carries more of your life.</p>
+    <h2>Start free. Grow for less than a coffee a week.</h2>
+    <p class="intro">Begin with one mentor and feel what being remembered is like. Add your whole team whenever you're ready — one shared memory across all of them.</p>
   </div>
   <div class="wrap">
     <div class="price-cards reveal">
       <div class="pc">
-        <span class="pt">Free Trial</span>
-        <div class="price">$0</div>
-        <p class="desc">Start with the Life Mentor. Upgrade when you want specialist support.</p>
-        <ul><li>Life Mentor only</li><li>Practical techniques you can try straight away</li><li class="no">No specialist mentors</li><li class="no">No deep mentor sessions</li><li>No card required</li></ul>
-        <div class="cred">Limited starter credits</div>
-        <a href="/signup?plan=free" class="btn btn-ghost">Start free</a>
+        <span class="pt">Try it</span>
+        <div class="price">Free</div>
+        <p class="desc">Start a real relationship with one mentor. No card required.</p>
+        <ul><li>One mentor of your choice</li><li>Remembers your first weeks</li><li>Feel the difference for yourself</li></ul>
+        <a href="#start" class="btn btn-ghost">Start free</a>
       </div>
-
-      <div class="pc">
-        <span class="pt">Single Mentor</span>
-        <div class="price">$19<small>/month</small></div>
-        <p class="desc">Focused support from one specialist mentor of your choosing.</p>
-        <ul><li>Choose one specialist mentor</li><li>Expert guidance and step-by-step plans</li><li>Your mentor remembers your goals, patterns and progress</li><li>Extra credits available anytime</li></ul>
-        <div class="cred">800 mentor credits / month</div>
-        <a href="/signup?plan=single" class="btn btn-ghost">Choose one mentor</a>
-      </div>
-
       <div class="pc feat">
-        <span class="pt">Mentor Plus</span>
-        <div class="price">$39<small>/month</small></div>
-        <span class="flag">Recommended</span>
-        <p class="desc">Support across several areas of life, with the depth to go properly into each.</p>
-        <ul><li>Access to all main mentors</li><li>Your mentors remember your goals, patterns and progress</li><li>Occasional deep mentor sessions for complex situations</li><li>Exercises and step-by-step plans that carry between mentors</li></ul>
-        <div class="cred">2,000 mentor credits / month</div>
-        <a href="/signup?plan=plus" class="btn btn-primary">Get Mentor Plus <span class="arr">→</span></a>
+        <span class="flag">Most popular</span>
+        <span class="pt">All Eight</span>
+        <div class="price">$29<small>/mo</small></div>
+        <p class="desc">Your whole team of mentors — one shared memory across every part of life.</p>
+        <ul><li>All eight mentors</li><li>One continuous memory</li><li>Unlimited conversations</li><li>Priority model, faster replies</li></ul>
+        <a href="#start" class="btn btn-primary">Get all eight <span class="arr">→</span></a>
       </div>
-
       <div class="pc">
-        <span class="pt">Premium</span>
-        <div class="price">$69<small>/month</small></div>
-        <p class="desc">For users who want deeper guidance, stronger continuity and more intensive mentor work.</p>
-        <ul><li>Access to all main mentors</li><li>Your mentors build on months of work, not just this week</li><li>More deep mentor sessions</li><li>Long-term programmes and in-depth plans</li><li>Priority quality on every reply</li></ul>
-        <div class="cred">5,000 mentor credits / month</div>
-        <a href="/signup?plan=premium" class="btn btn-ghost">Go Premium</a>
+        <span class="pt">One Mentor</span>
+        <div class="price">$14<small>/mo</small></div>
+        <p class="desc">Go deep with a single mentor of your choice.</p>
+        <ul><li>Any one mentor</li><li>Full continuous memory</li><li>Unlimited conversations</li></ul>
+        <a href="#start" class="btn btn-ghost">Choose a mentor</a>
       </div>
     </div>
-
-    <p class="cred-note">Credits are used when mentors respond, create plans, remember context or provide deeper guidance. Need more? Buy extra Mentor Credits at any time.</p>
-    <div class="packs reveal">
-      <span class="pack"><b>$10</b> · 500 credits</span>
-      <span class="pack"><b>$25</b> · 1,500 credits</span>
-      <span class="pack"><b>$50</b> · 3,500 credits</span>
-    </div>
-
-    <div class="company-card reveal">
-      <div>
-        <span class="pt">For companies</span>
-        <h3>Company Stress Mentor</h3>
-        <p>Private support for employees. Anonymous insight for companies. A dedicated Stress &amp; Burnout Mentor your people can speak to in confidence — before things reach the point of sick leave.</p>
-        <p class="privacy-line">Your organisation sees aggregate trends only. Individual conversations are never visible to the employer.</p>
-      </div>
-      <div>
-        <div class="price">$125<small>/user/month</small></div>
-        <ul>
-          <li>Stress &amp; Burnout Mentor for every employee</li>
-          <li>Private, confidential employee conversations</li>
-          <li>Company-level anonymised insights</li>
-          <li>No minimum number of seats</li>
-        </ul>
-        <a href="/company-stress-mentor" class="btn btn-primary">Start a company plan <span class="arr">→</span></a>
-      </div>
-    </div>
-
-    <p class="price-note">Still far less than one hour with a human mentor. Cancel any time.</p>
+    <p class="price-note">Example pricing, shown for illustration — final plans and prices to be confirmed at launch.</p>
   </div>
 </section>
 
@@ -1092,11 +932,11 @@
     </details>
     <details class="faq" style="--h:var(--m5)">
       <summary>Can I use more than one mentor?<span class="fic">+</span></summary>
-      <div class="faq-a"><p>Yes. Mentor Plus and Premium include access to all main mentors. On Single Mentor, you choose one specialist mentor and can upgrade whenever you want access to more. Whatever you choose, your mentors share a single memory of you — so a conversation in one corner of life is informed by everything else you've talked about.</p></div>
+      <div class="faq-a"><p>Absolutely. Start with one and add others whenever life asks for them. Whatever you choose, they all share a single memory of you — so a conversation in one corner of life is informed by everything else you've talked about.</p></div>
     </details>
     <details class="faq" style="--h:var(--m7)">
       <summary>What does it cost, and can I try it first?<span class="fic">+</span></summary>
-      <div class="faq-a"><p>You can start free with the Life Mentor, no card required. From there, a single specialist mentor is $19 a month, Mentor Plus is $39 and Premium is $69. Each plan includes a monthly allowance of Mentor Credits, which are used when mentors respond, build plans or draw on what they remember about you — and you can buy more at any time. Cancel whenever you like.</p></div>
+      <div class="faq-a"><p>You can start free with one mentor, no card required. From there, a single mentor is about $14 a month and the full team of eight about $29 a month. Cancel anytime. (These are example prices, confirmed at launch.)</p></div>
     </details>
   </div>
 </section>
