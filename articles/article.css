@@ -86,6 +86,26 @@ nav a{text-decoration:none}
 .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--h);color:#fff;font-weight:600;padding:.85rem 1.6rem;border-radius:100px;text-decoration:none;transition:.3s var(--ease);box-shadow:0 8px 24px -12px color-mix(in srgb,var(--h) 70%,transparent)}
 .btn-primary:hover{transform:translateY(-2px)}
 
+/* ---- insights hub ---- */
+.hub-head{padding:7.5rem 0 1.5rem}
+.hub-head h1{font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(2.3rem,5.5vw,3.4rem);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
+.hub-head .a-standfirst{max-width:52ch}
+.hub-group{padding:2.2rem 0 .6rem}
+.hub-group.band{background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2.6rem 0 2.8rem;margin-top:1.4rem}
+.hub-bar{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.2rem;padding-bottom:.7rem;border-bottom:1px solid var(--line)}
+.hub-bar h2{font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:1.6rem;color:var(--ink)}
+.hub-bar a{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--h);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--h) 40%,transparent)}
+.hub-bar a:hover{border-bottom-color:var(--h)}
+.hub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:.8rem}
+.hub-card{display:flex;flex-direction:column;gap:.5rem;padding:1.25rem 1.35rem;background:var(--surface);border:1px solid var(--line);border-radius:16px;text-decoration:none;transition:.28s var(--ease);border-top:3px solid color-mix(in srgb,var(--h) 65%,transparent)}
+.hub-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--h) 45%,transparent);box-shadow:0 18px 40px -28px rgba(32,31,27,.5)}
+.hub-card .kicker{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--h)}
+.hub-card h3{font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:1.16rem;line-height:1.25;color:var(--ink)}
+.hub-card p{font-size:.93rem;color:var(--text-dim);line-height:1.55;margin:0}
+.hub-card .by{margin-top:auto;padding-top:.6rem;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint)}
+.hub-soon{padding:2.6rem 0 1rem;text-align:center;color:var(--text-dim);font-size:.98rem}
+.hub-soon .foot-mono{display:block;margin-top:.6rem;color:var(--text-faint)}
+
 footer{border-top:1px solid var(--line);padding:2.4rem 0;color:var(--text-faint);font-size:.85rem}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;align-items:center}
 .foot-mono{font-family:'Space Mono',monospace;font-size:.64rem;letter-spacing:.06em}
