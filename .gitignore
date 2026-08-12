@@ -1,0 +1,3 @@
+# iCloud offload-stubbe — må aldrig committes i stedet for de rigtige filer
+*.icloud
+.DS_Store
