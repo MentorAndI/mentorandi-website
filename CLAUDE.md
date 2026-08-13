@@ -31,10 +31,14 @@ rsync-kommando. `rsync a.html articles/*.html host:dest/` flader undermappen ud 
 - Enkeltfil: skriv destinationsfilnavnet ud — `rsync index.html host:dest/index.html`.
 - Tjek altid destinationen i tørløb (`-n`) før første kørsel af en ny kommando.
 
-**FARE — SSH-forbindelser.** GreenGeeks har brute-force-beskyttelse på port 22. Tyve korte
-`ssh`/`rsync`-forbindelser på et kvarter udløser en firewall-DROP-regel, og adgangen forsvinder
-(fejlen er `Operation timed out`, ikke `refused`). Det skete 13. august 2026. Blokeringen ligger i
-serverens CSF/LFD og er *ikke* synlig i cPanel → IP Blocker; kun GreenGeeks support kan fjerne den.
+**FARE — SSH-forbindelser.** GreenGeeks kører **Imunify360** med brute-force-beskyttelse på port
+22. Tyve korte `ssh`/`rsync`-forbindelser på et kvarter udløser en DROP-regel, og adgangen
+forsvinder (fejlen er `Operation timed out`, ikke `refused` — pakkerne droppes tavst). Det skete
+13. august 2026 og kostede en halv dags deploy-adgang.
+
+Blokeringen ligger i Imunify360 og er *ikke* synlig i cPanel → IP Blocker, som kun viser
+blokeringer man selv har lagt ind mod besøgende. Kun GreenGeeks support kan fjerne den; bed dem
+tjekke Imunify for IP'en.
 
 - Saml serverkommandoer i ÉN ssh-session med `&&` eller et her-dokument.
 - Undersøg aldrig serveren med en kommando pr. spørgsmål.
