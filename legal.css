@@ -90,13 +90,6 @@ nav a{text-decoration:none}
   padding:1.1rem 1.3rem;margin:1.4rem 0;font-size:.97rem;line-height:1.75;
 }
 
-/* Unfilled legal placeholders are deliberately conspicuous so they cannot
-   be published unnoticed. Remove this rule once the values are in. */
-.tbd{
-  background:color-mix(in srgb,#C68A38 22%,transparent);
-  border-bottom:1px dashed #9E7A2C;padding:0 .18em;border-radius:2px;
-  font-family:'Space Mono',monospace;font-size:.9em;color:var(--ink);
-}
 
 .lg-other{
   margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--line);
