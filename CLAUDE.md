@@ -31,18 +31,25 @@ rsync-kommando. `rsync a.html articles/*.html host:dest/` flader undermappen ud 
 - Enkeltfil: skriv destinationsfilnavnet ud — `rsync index.html host:dest/index.html`.
 - Tjek altid destinationen i tørløb (`-n`) før første kørsel af en ny kommando.
 
-**FARE — SSH-forbindelser.** GreenGeeks kører **Imunify360** med brute-force-beskyttelse på port
-22. Tyve korte `ssh`/`rsync`-forbindelser på et kvarter udløser en DROP-regel, og adgangen
-forsvinder (fejlen er `Operation timed out`, ikke `refused` — pakkerne droppes tavst). Det skete
-13. august 2026 og kostede en halv dags deploy-adgang.
+**FARE — SSH-forbindelser.** Serveren `ams203` kører **CSF/LFD** med port-scan-detektion på port
+22. Tærsklen er bekræftet af GreenGeeks support 13. august 2026 ud fra deres egen log:
 
-Blokeringen ligger i Imunify360 og er *ikke* synlig i cPanel → IP Blocker, som kun viser
-blokeringer man selv har lagt ind mod besøgende. Kun GreenGeeks support kan fjerne den; bed dem
-tjekke Imunify for IP'en.
+```
+lfd: *Port Scan* detected from <IP>. 21 hits in the last 110 seconds
+     - *Blocked in csf* for 600 secs [PS_LIMIT]
+```
+
+**Cirka 20 forbindelser på under to minutter udløser den. Blokeringen varer 600 sekunder.**
+Hver `ssh` og hver `rsync` tæller som én forbindelse. Fejlen er `Operation timed out`, ikke
+`refused` — pakkerne droppes tavst, så det ligner et netværksproblem.
+
+Blokeringen er *ikke* synlig i cPanel → IP Blocker, som kun viser blokeringer man selv har lagt
+ind mod besøgende. (GreenGeeks' første svar pegede på Imunify360; deres log viste csf/lfd.)
 
 - Saml serverkommandoer i ÉN ssh-session med `&&` eller et her-dokument.
 - Undersøg aldrig serveren med en kommando pr. spørgsmål.
-- Ved mistanke om blokering: prob højst hvert 5. minut — hyppige forsøg holder reglen i live.
+- Ved blokering: vent 10 minutter. Prob højst hvert 5. minut — nye forsøg nulstiller tælleren.
+
 
 SSL: gyldigt Let's Encrypt-wildcard `*.mentorandi.com` til 1. oktober 2026. (cPanel viser
 "Expired" for kontoens primærdomæne stepstonecapital.com — det er ikke dette site.)
