@@ -1,0 +1,112 @@
+/* Mentor And I — shared styling for the legal pages
+   (terms.html, privacy.html, cookies.html).
+   Same warm system as the rest of the site; no new colours, no new fonts. */
+
+:root{
+  --h:#BC5B38;
+  --paper:#F4EDE1;--band:#EFE6D4;--surface:#FFFFFF;--surface-warm:#FBF7EF;
+  --ink:#201F1B;--text:#4A4539;--text-dim:#6A6456;--text-faint:#8A8372;
+  --line:rgba(32,31,27,0.12);--line-strong:rgba(32,31,27,0.20);
+  --ease:cubic-bezier(0.16,1,0.3,1);--pad-x:clamp(1.4rem,5vw,3rem);
+  --measure:46rem; /* ~736px readable column */
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--text);
+  font-family:'Hanken Grotesk',system-ui,sans-serif;
+  font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.serif{font-family:'Newsreader',Georgia,serif}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 var(--pad-x)}
+
+/* ---- header / nav: identical to the rest of the site ---- */
+nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--paper) 82%,transparent);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+nav a{text-decoration:none}
+.nav-logo{height:30px;width:auto;display:block}
+.nav-actions{display:flex;align-items:center;gap:1.3rem;font-size:.9rem}
+.nav-cta{padding:.55rem 1.1rem;border-radius:100px;background:#BC5B38;color:#fff;font-weight:600;font-size:.85rem;transition:.3s var(--ease);white-space:nowrap;box-shadow:0 6px 16px rgba(188,91,56,0.28)}
+.nav-cta:hover{background:#9E4A2C}
+.nav-left{display:flex;align-items:center;gap:1.1rem;min-width:0}
+.nav-back{color:var(--text-dim);font-size:.85rem;white-space:nowrap}
+.nav-back:hover{color:var(--ink)}
+.nav-check{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.nav-menu{display:flex;align-items:center;gap:1.15rem;font-size:.87rem}
+.nav-menu a{color:var(--text-dim);white-space:nowrap;transition:.25s var(--ease)}
+.nav-menu a:hover{color:var(--ink)}
+.nav-burger{display:none;align-items:center;justify-content:center;width:36px;height:36px;margin-right:-6px;cursor:pointer;color:var(--ink)}
+@media (max-width:1040px){
+  .nav-back{display:none}
+  .nav-burger{display:inline-flex}
+  .nav-menu{position:fixed;top:64px;left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:.4rem var(--pad-x) 1.5rem}
+  .nav-check:checked~.nav-menu{display:flex}
+  .nav-menu a{font-family:'Newsreader',Georgia,serif;font-size:1.2rem;color:var(--ink);padding:.9rem 0;border-bottom:1px solid var(--line)}
+  nav .wrap{position:relative}
+  .nav-actions .nav-cta{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+}
+@media (max-width:420px){.nav-cta{padding:.5rem .85rem;font-size:.8rem}}
+
+/* ---- page head: deliberately small, no hero ---- */
+.lg-head{padding:7rem 0 1.4rem}
+.lg-head .wrap,.lg-body .wrap{max-width:calc(var(--measure) + 2 * var(--pad-x))}
+.lg-head h1{
+  font-family:'Newsreader',Georgia,serif;font-weight:500;
+  font-size:clamp(2rem,4.4vw,2.7rem);line-height:1.12;letter-spacing:-.02em;color:var(--ink);
+}
+.lg-updated{
+  font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--text-faint);margin-top:.9rem;
+}
+.lg-intro{font-size:1.06rem;color:var(--text-dim);margin-top:1.2rem;line-height:1.6}
+
+/* ---- prose ---- */
+.lg-body{padding:1.4rem 0 3.4rem}
+.lg-body p{margin-bottom:1.15rem}
+.lg-body h2{
+  font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:1.42rem;line-height:1.25;
+  color:var(--ink);margin:2.4rem 0 .85rem;padding-top:1.4rem;border-top:1px solid var(--line);
+}
+.lg-body h2:first-of-type{border-top:none;padding-top:0;margin-top:1.8rem}
+.lg-body h3{font-size:1.02rem;font-weight:600;color:var(--ink);margin:1.5rem 0 .4rem}
+.lg-body ul{margin:0 0 1.15rem 1.15rem}
+.lg-body li{margin-bottom:.45rem;padding-left:.3rem}
+.lg-body li::marker{color:var(--h)}
+.lg-body strong{color:var(--ink);font-weight:600}
+.lg-body a{color:var(--h);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--h) 40%,transparent)}
+.lg-body a:hover{border-bottom-color:var(--h)}
+
+.lg-note{
+  background:var(--surface-warm);border:1px solid var(--line);
+  border-left:3px solid color-mix(in srgb,var(--h) 55%,var(--line-strong));
+  border-radius:14px;padding:1.1rem 1.3rem;margin:1.8rem 0;font-size:.97rem;color:var(--text-dim);
+}
+.lg-note p{margin-bottom:.7rem}
+.lg-note p:last-child{margin-bottom:0}
+
+.lg-contact{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:1.1rem 1.3rem;margin:1.4rem 0;font-size:.97rem;line-height:1.75;
+}
+
+/* Unfilled legal placeholders are deliberately conspicuous so they cannot
+   be published unnoticed. Remove this rule once the values are in. */
+.tbd{
+  background:color-mix(in srgb,#C68A38 22%,transparent);
+  border-bottom:1px dashed #9E7A2C;padding:0 .18em;border-radius:2px;
+  font-family:'Space Mono',monospace;font-size:.9em;color:var(--ink);
+}
+
+.lg-other{
+  margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--line);
+  display:flex;gap:1.4rem;flex-wrap:wrap;font-size:.9rem;
+}
+.lg-other a{color:var(--text-dim);text-decoration:none;border-bottom:1px solid var(--line-strong);padding-bottom:2px}
+.lg-other a:hover{color:var(--ink)}
+
+@media (max-width:600px){
+  body{font-size:16px}
+  .lg-head{padding:6.2rem 0 1.2rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
