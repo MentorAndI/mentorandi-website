@@ -22,6 +22,24 @@ verificeret stien i samme kommando.
 
 Beslægtede docroots på samme konto: `auth.mentorandi.com`, `staging.mentorandi.com`.
 
+**FARE — rsync og stier.** Bland aldrig filer fra roden og filer fra en undermappe i samme
+rsync-kommando. `rsync a.html articles/*.html host:dest/` flader undermappen ud i roden, og
+`articles/index.html` overskriver forsiden. Det skete 13. august 2026 og tog forsiden ned.
+
+- Én rsync pr. destinationsmappe. Rod for sig, `articles/` for sig.
+- Mappesynk: skråstreg på **begge** sider — `rsync articles/ host:dest/articles/`.
+- Enkeltfil: skriv destinationsfilnavnet ud — `rsync index.html host:dest/index.html`.
+- Tjek altid destinationen i tørløb (`-n`) før første kørsel af en ny kommando.
+
+**FARE — SSH-forbindelser.** GreenGeeks har brute-force-beskyttelse på port 22. Tyve korte
+`ssh`/`rsync`-forbindelser på et kvarter udløser en firewall-DROP-regel, og adgangen forsvinder
+(fejlen er `Operation timed out`, ikke `refused`). Det skete 13. august 2026. Blokeringen ligger i
+serverens CSF/LFD og er *ikke* synlig i cPanel → IP Blocker; kun GreenGeeks support kan fjerne den.
+
+- Saml serverkommandoer i ÉN ssh-session med `&&` eller et her-dokument.
+- Undersøg aldrig serveren med en kommando pr. spørgsmål.
+- Ved mistanke om blokering: prob højst hvert 5. minut — hyppige forsøg holder reglen i live.
+
 SSL: gyldigt Let's Encrypt-wildcard `*.mentorandi.com` til 1. oktober 2026. (cPanel viser
 "Expired" for kontoens primærdomæne stepstonecapital.com — det er ikke dette site.)
 
