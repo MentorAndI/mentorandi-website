@@ -215,6 +215,14 @@ $tok = make_token($ts);
 <meta property="og:url" content="https://mentorandi.com/contact.php">
 <meta property="og:site_name" content="Mentor And I">
 <meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://mentorandi.com/images/og/contact.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Contact — Mentor And I">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact | Mentor And I">
+<meta name="twitter:description" content="Get in touch with the team behind Mentor And I. Questions about your account, billing, privacy or the mentors themselves.">
+<meta name="twitter:image" content="https://mentorandi.com/images/og/contact.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
@@ -257,6 +265,64 @@ $tok = make_token($ts);
 .cf-msg li{margin-bottom:.3rem}
 .cf-msg strong{color:var(--ink)}
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "ContactPage",
+   "@id": "https://mentorandi.com/contact.php#page",
+   "url": "https://mentorandi.com/contact.php",
+   "name": "Contact | Mentor And I",
+   "description": "Get in touch with the team behind Mentor And I. Questions about your account, billing, privacy or the mentors themselves.",
+   "inLanguage": "en-GB",
+   "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://mentorandi.com/#website",
+    "url": "https://mentorandi.com/",
+    "name": "Mentor And I"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "@id": "https://mentorandi.com/#org",
+    "name": "Mentor AI Corp",
+    "alternateName": "Mentor And I",
+    "url": "https://mentorandi.com/",
+    "logo": {
+     "@type": "ImageObject",
+     "url": "https://mentorandi.com/images/MentorAndIlogo.png",
+     "width": 1106,
+     "height": 220
+    }
+   },
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://mentorandi.com/images/og/contact.jpg",
+    "width": 1200,
+    "height": 630
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://mentorandi.com/contact.php#crumbs",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://mentorandi.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Contact",
+     "item": "https://mentorandi.com/contact.php"
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
 
