@@ -1,0 +1,55 @@
+name: One-time website launch fix
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/fix-launch-website.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ github.token }}
+      - name: Apply exact launch fixes
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path("index.html")
+          s = p.read_text()
+          replacements = {
+              '<a href="#" class="btn btn-light">Start free <span class="arr">→</span></a>': '<a href="https://app.mentorandi.com/signup?plan=free" class="btn btn-light">Start free <span class="arr">→</span></a>',
+              '<span class="pack"><b>$10</b> · 500 credits</span>': '<span class="pack"><b>$10</b> · 1,000 credits</span>',
+              '<span class="pack"><b>$25</b> · 1,500 credits</span>': '<span class="pack"><b>$25</b> · 2,500 credits</span>',
+              '<span class="pack"><b>$50</b> · 3,500 credits</span>': '<span class="pack"><b>$50</b> · 5,000 credits</span>',
+          }
+          for old, new in replacements.items():
+              count = s.count(old)
+              if count != 1:
+                  raise SystemExit(f"Expected exactly one occurrence, found {count}: {old}")
+              s = s.replace(old, new)
+          p.write_text(s)
+      - name: Verify fixes
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -F 'https://app.mentorandi.com/signup?plan=free" class="btn btn-light"' index.html
+          grep -F '<b>$10</b> · 1,000 credits' index.html
+          grep -F '<b>$25</b> · 2,500 credits' index.html
+          grep -F '<b>$50</b> · 5,000 credits' index.html
+          ! grep -F '<a href="#" class="btn btn-light">Start free' index.html
+      - name: Commit fixes and remove one-time workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm .github/workflows/fix-launch-website.yml
+          git config user.name "MentorAndI automation"
+          git config user.email "37156918+MentorAndI@users.noreply.github.com"
+          git add index.html .github/workflows/fix-launch-website.yml
+          git commit -m "Fix final signup CTA and live credit packs"
+          git push origin HEAD:main
