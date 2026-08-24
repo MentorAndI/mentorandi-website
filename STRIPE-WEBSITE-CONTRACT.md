@@ -1,6 +1,7 @@
 # Stripe billing — what the website emits, and what the app must serve
 
-Written 23 August 2026, in response to the live Stripe billing handoff.
+Written 23 August 2026, in response to the live Stripe billing handoff. Updated
+24 August 2026 after the production app signup routes became available.
 
 `mentorandi.com` is a **static HTML site on shared hosting**. It has no server, no
 database, no sessions and no secrets. Almost every item in the billing handoff is
@@ -15,9 +16,9 @@ guarantees, and what it needs back from the app.
 |---|---|
 | 2 — no Stripe config in frontend or Git | **Done.** No key, Price ID or `stripe` string exists anywhere in the site or in git history. Verified 23 Aug 2026. |
 | 3 — no hard-coded Stripe Checkout URLs | **Done.** Buttons point at the app's own signup route. |
-| 5 — `single` → `/signup?plan=single` | **Done.** |
-| 6 — `plus` → `/signup?plan=plus` | **Done.** |
-| 7 — `premium` → `/signup?plan=premium` | **Done.** |
+| 5 — `single` → `https://app.mentorandi.com/signup?plan=single` | **Done.** |
+| 6 — `plus` → `https://app.mentorandi.com/signup?plan=plus` | **Done.** |
+| 7 — `premium` → `https://app.mentorandi.com/signup?plan=premium` | **Done.** |
 | 13 — displayed prices | **Done.** $19 / $39 / $69 / $125 exactly as specified. |
 | 15 — no sandbox IDs mixed in | **Done.** There are none of either kind. |
 
@@ -27,15 +28,16 @@ These are the only billing entry points on the site. They are plain links in sta
 HTML; nothing else happens client-side.
 
 ```
-/signup?plan=free        Free Trial      $0    no Stripe subscription
-/signup?plan=single      Single Mentor   $19/month
-/signup?plan=plus        Mentor Plus     $39/month
-/signup?plan=premium     Premium         $69/month
+https://app.mentorandi.com/signup?plan=free        Free Trial      $0    no Stripe subscription
+https://app.mentorandi.com/signup?plan=single      Single Mentor   $19/month
+https://app.mentorandi.com/signup?plan=plus        Mentor Plus     $39/month
+https://app.mentorandi.com/signup?plan=premium     Premium         $69/month
 ```
 
-**All four currently return 404.** The app does not serve `/signup` yet. Until it does,
-every pricing button on the live site is a dead end for a real visitor. This is the most
-urgent item, ahead of anything to do with webhooks.
+The production marketing links intentionally use absolute URLs on
+`app.mentorandi.com`. The marketing site and app are hosted separately, so relative
+`/signup` links would incorrectly resolve on `mentorandi.com`. The production app serves
+all four signup routes and uses the plan key to preselect the corresponding plan.
 
 ### `?plan=` is a hint, not an authorisation
 
@@ -85,28 +87,30 @@ subscriptions and are unaffected.
 
 Everything below is outside this repository.
 
-1. **Serve `/signup`** and accept the four plan keys above. Nothing else on the site works
-   until this exists.
-2. Server-side Checkout endpoint, `subscription` mode, Price IDs from production
+1. Server-side Checkout endpoint, `subscription` mode, Price IDs from production
    environment variables only.
-3. Free Trial must not create a Stripe subscription or a Checkout Session.
-4. Production webhook endpoint, separate from staging, subscribed to
+2. Free Trial must not create a Stripe subscription or a Checkout Session.
+3. Production webhook endpoint, separate from staging, subscribed to
    `checkout.session.completed`, `customer.subscription.created`,
    `customer.subscription.updated`, `customer.subscription.deleted`,
    `invoice.payment_succeeded`, `invoice.payment_failed`.
-5. Verify webhook signatures. Make handling idempotent — Stripe retries.
-6. Map verified subscription state to internal entitlements.
-7. Lift the live-key restriction in **production configuration only**; staging stays in
+4. Verify webhook signatures. Make handling idempotent — Stripe retries.
+5. Map verified subscription state to internal entitlements.
+6. Lift the live-key restriction in **production configuration only**; staging stays in
    test mode.
-8. Account, settings and billing-portal flows showing the same four plans.
+7. Account, settings and billing-portal flows showing the same four plans.
 
 ## Launch gate
 
-Before the pricing buttons are opened to the public, run one controlled real payment on
-production and confirm the whole chain:
+The website-to-app handoff can be verified without entering checkout: each marketing CTA
+must load its matching production app signup page with the correct plan preselected.
+
+End-to-end billing validation remains an app and operations responsibility. When it is
+authorised separately, run one controlled real payment on production and confirm the
+whole chain:
 
 > checkout → payment → signed webhook → subscription record → correct entitlement →
 > customer portal → cancellation
 
-Until that passes, the buttons should not be advertised as working. They currently 404,
-which is at least an honest failure rather than a broken payment.
+That payment test is outside this static website's deployment and must not be performed
+as part of a marketing-link verification.
