@@ -343,7 +343,7 @@ $tok = make_token($ts);
     <a href="/index.html#faq">FAQ</a>
   </div>
   <div class="nav-actions">
-    <a class="nav-cta" href="/index.html#start">Start free</a>
+    <a class="nav-cta" href="https://app.mentorandi.com/signup?plan=free">Start free</a>
     <label class="nav-burger" for="navtoggle" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></label>
   </div>
 </div></nav>
@@ -439,7 +439,7 @@ $tok = make_token($ts);
           <a href="/index.html#mentors">Meet the mentors</a>
           <a href="/index.html#pricing">Pricing</a>
           <a href="/index.html#trust">Trust &amp; care</a>
-          <a href="/index.html#start">Get started</a>
+          <a href="https://app.mentorandi.com/signup?plan=free">Get started</a>
         </div>
         <div class="ft-col">
           <h4>Company</h4>

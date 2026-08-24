@@ -104,14 +104,14 @@
     <a href="/index.html#faq">FAQ</a>
   </div>
   <div class="nav-actions">
-    <a class="nav-cta" href="/index.html#start">Start free</a>
+    <a class="nav-cta" href="https://app.mentorandi.com/signup?plan=free">Start free</a>
     <label class="nav-burger" for="navtoggle" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></label>
   </div>
 </div></nav>
 
 <header class="lg-head"><div class="wrap">
   <h1 class="serif">AI Safety</h1>
-  <div class="lg-updated">Last updated: 13 August 2026</div>
+  <div class="lg-updated">Last updated: 25 August 2026</div>
   <p class="lg-intro">Mentor And I is built to provide AI mentoring, not human companionship, therapy or emergency care. This page explains what safeguards are in place when a conversation involves suicide, self-harm or immediate danger — and, just as importantly, what is not in place yet.</p>
 </div></header>
 
@@ -126,23 +126,18 @@
 <p>An AI mentor is not a licensed therapist, psychologist, physician or other healthcare professional, and a conversation with one does not create a professional relationship. Mentor And I provides mentoring, coaching, educational and self-help support.</p>
 
 <h2>2. What is in place today</h2>
-<p>We would rather describe less than we have than more, so this section covers only what the service actually does at the time of writing.</p>
-<p>Mentor And I gives every mentor a standing instruction not to present itself as a substitute for medical or emergency professionals. Where a conversation shows signs of immediate danger or self-harm, that instruction directs the mentor to encourage the person to contact local emergency services or qualified human support.</p>
-<p>This is guidance given to a language model. It shapes how a mentor is likely to respond; it does not guarantee how a mentor will respond in every case.</p>
+<p>We would rather describe less than we have than more, so this section covers only safeguards that are implemented and tested today.</p>
+<p>Before an ordinary mentor response is generated, Mentor And I runs a separate automated safety check for language indicating self-harm, suicide or immediate danger. The safety layer classifies the message independently of the mentor persona.</p>
+<p>When the system classifies a message as high risk, it interrupts the normal mentoring flow and returns a deterministic safety response that directs the user toward immediate human or emergency support. The high-risk message is not sent to the ordinary mentor language-model response path and the safety response does not consume mentor credits.</p>
+<p>The safety layer is designed to fail closed: a failure in the safety classifier does not simply allow the normal mentor response to proceed. Safety regression tests are part of the application launch checks.</p>
 
-<h2>3. What is not in place yet</h2>
-<p>Mentor And I does <strong>not</strong> currently have:</p>
-<ul>
-<li>an automated system that detects language indicating suicidal ideation or self-harm;</li>
-<li>risk classification of conversations;</li>
-<li>a deterministic override that interrupts the normal mentoring flow when a safety concern appears; or</li>
-<li>a dedicated crisis-handling path separate from ordinary mentoring.</li>
-</ul>
-<p>These safeguards are under development. We will describe them here once they are implemented and tested, and not before. We would rather this page be uncomfortably plain than reassuring and wrong.</p>
+<h2>3. Limits of the safety layer</h2>
+<p>Automated safety systems are imperfect. The classifier can miss genuine danger, can react to language that was not intended as a crisis statement, and cannot determine a person's actual clinical risk or circumstances.</p>
+<p>The safety layer is not human monitoring, diagnosis, treatment or emergency response. Mentor And I does not guarantee that every crisis will be detected or handled correctly.</p>
 
 <h2>4. What this means for you</h2>
-<p>Do not rely on Mentor And I to notice that you are in danger. It may not.</p>
-<p>Do not delay contacting a doctor, a crisis line or emergency services because of anything a mentor has said. If a conversation is heading somewhere that needs a human, please reach one.</p>
+<p>Do not rely on Mentor And I as your only way to identify or respond to an emergency. If you believe that you or another person may be in immediate danger, contact local emergency services or qualified human support directly.</p>
+<p>Do not delay contacting a doctor, crisis service or emergency service because of anything a mentor has said.</p>
 <p>Mentor And I is not continuously monitored by a human professional, and messages sent through it are not read in real time.</p>
 
 <h2>5. Limits of automated safety systems</h2>
@@ -176,7 +171,7 @@
           <a href="/index.html#mentors">Meet the mentors</a>
           <a href="/index.html#pricing">Pricing</a>
           <a href="/index.html#trust">Trust &amp; care</a>
-          <a href="/index.html#start">Get started</a>
+          <a href="https://app.mentorandi.com/signup?plan=free">Get started</a>
         </div>
         <div class="ft-col">
           <h4>Company</h4>
