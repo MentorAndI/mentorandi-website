@@ -81,11 +81,20 @@ $10 · 1,000 credits      $25 · 2,500 credits      $50 · 5,000 credits
 tested end to end in production. Do **not** create replacement Stripe products — reuse the
 existing ones.
 
-The site shows these three packages under the line *"Need more? Buy extra Mentor Credits at
-any time."* and links them to the authenticated purchase flow at
+The site links these three packages to the authenticated purchase flow at
 `https://app.mentorandi.com/credits`. That route is behind authentication and redirects
 signed-out visitors to `/login?next=%2Fcredits`, which returns them to the purchase page
 after sign-in.
+
+**Top-ups require an active subscription.** A Free Trial user cannot buy them. The site
+said *"Need more? Buy extra Mentor Credits at any time"* — an unconditional promise the
+app does not honour — and the FAQ repeated it one sentence after inviting the reader to
+start free. Both were corrected on 25 August 2026 to *"Active subscribers can buy extra
+Mentor Credits whenever needed"* and *"subscribers can buy more whenever they need to"*.
+
+Anyone changing this copy must keep the subscriber qualifier. The packages remain visible
+to signed-out and Free Trial visitors, which is intended — they show what a subscription
+leads to. The eligibility rule itself is enforced by the app, not the website.
 
 The monthly credit allowances shown on each plan are part of the subscriptions and are
 unaffected.
