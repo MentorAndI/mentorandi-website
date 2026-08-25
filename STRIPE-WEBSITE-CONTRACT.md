@@ -1,7 +1,8 @@
 # Stripe billing — what the website emits, and what the app must serve
 
 Written 23 August 2026, in response to the live Stripe billing handoff. Updated
-24 August 2026 after the production app signup routes became available.
+24 August 2026 after the production app signup routes became available, and
+25 August 2026 with the authoritative credit top-up packages.
 
 `mentorandi.com` is a **static HTML site on shared hosting**. It has no server, no
 database, no sessions and no secrets. Almost every item in the billing handoff is
@@ -32,7 +33,11 @@ https://app.mentorandi.com/signup?plan=free        Free Trial      $0    no Stri
 https://app.mentorandi.com/signup?plan=single      Single Mentor   $19/month
 https://app.mentorandi.com/signup?plan=plus        Mentor Plus     $39/month
 https://app.mentorandi.com/signup?plan=premium     Premium         $69/month
+https://app.mentorandi.com/credits                 Credit top-ups        authenticated
 ```
+
+The credits link carries no plan, price or quantity. It is a plain link to the
+authenticated purchase flow; the app decides what is on offer and at what price.
 
 The production marketing links intentionally use absolute URLs on
 `app.mentorandi.com`. The marketing site and app are hosted separately, so relative
@@ -62,24 +67,28 @@ block is ever unhidden, that link needs a destination — and per handoff item 8
 be a company onboarding or sales flow with seat quantity, not consumer self-serve
 checkout.
 
-### Credit top-up packs stay published
+### Credit top-up packs — live and purchasable
 
-Handoff item 14 says credit top-up prices are not approved. The site nevertheless
-advertises three of them:
+**Superseded 25 August 2026.** Handoff item 14 said top-up prices were not approved, and
+an earlier version of this file recorded them as 500 / 1,500 / 3,500 credits. Both are out
+of date. The authoritative packages are:
 
 ```
-$10 · 500 credits      $25 · 1,500 credits      $50 · 3,500 credits
+$10 · 1,000 credits      $25 · 2,500 credits      $50 · 5,000 credits
 ```
 
-plus the line *"Need more? Buy extra Mentor Credits at any time."*
+**These products already exist in live Stripe.** The $10 / 1,000-credit package has been
+tested end to end in production. Do **not** create replacement Stripe products — reuse the
+existing ones.
 
-René has confirmed these prices are correct and simply not yet created in Stripe, and
-asked for them to stay. Recording it here because the site is currently advertising a
-purchase that cannot be completed, and whoever builds the top-up flow should use exactly
-these three prices.
+The site shows these three packages under the line *"Need more? Buy extra Mentor Credits at
+any time."* and links them to the authenticated purchase flow at
+`https://app.mentorandi.com/credits`. That route is behind authentication and redirects
+signed-out visitors to `/login?next=%2Fcredits`, which returns them to the purchase page
+after sign-in.
 
-The monthly credit allowances shown on each plan (800 / 2,000 / 5,000) are part of the
-subscriptions and are unaffected.
+The monthly credit allowances shown on each plan are part of the subscriptions and are
+unaffected.
 
 ---
 
