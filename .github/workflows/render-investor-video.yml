@@ -19,7 +19,7 @@ jobs:
         working-directory: investor-video
 
     steps:
-      - name: Check out branch
+      - name: Check out film branch
         uses: actions/checkout@v4
         with:
           ref: feature/investor-video-v1
@@ -28,11 +28,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: investor-video/package-lock.json
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --no-audit --no-fund
+
+      - name: Install Remotion browser
+        run: npx remotion browser ensure
 
       - name: Render MP4
         run: npm run render
