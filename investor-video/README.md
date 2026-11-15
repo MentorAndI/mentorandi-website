@@ -1,6 +1,6 @@
 # Mentor And I — Investor Film
 
-A code-driven investor overview built in React + Remotion.
+A code-driven investor overview built in React + Remotion. First render target: investor-film v1.
 
 ## Composition
 
