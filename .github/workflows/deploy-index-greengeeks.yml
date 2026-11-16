@@ -1,0 +1,80 @@
+name: Deploy marketing index to GreenGeeks
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "index.html"
+      - ".github/workflows/deploy-index-greengeeks.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mentorandi-marketing-index-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SSH_HOST: ${{ secrets.GREENGEEKS_SSH_HOST || secrets.MENTORANDI_GREENGEEKS_SSH_HOST || '107.6.151.38' }}
+      SSH_USER: ${{ secrets.GREENGEEKS_SSH_USER || secrets.MENTORANDI_GREENGEEKS_SSH_USER || 'stepston' }}
+      SSH_KEY: ${{ secrets.GREENGEEKS_SSH_KEY || secrets.MENTORANDI_GREENGEEKS_SSH_KEY || secrets.WEBSITE_SSH_KEY || secrets.DEPLOY_SSH_KEY }}
+      DEST_FILE: /home/stepston/public_html/mentorandi/index.html
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Validate deploy inputs
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          test -f index.html
+          [[ "$SSH_HOST" =~ ^[A-Za-z0-9.-]+$ ]] || { echo "Invalid SSH host" >&2; exit 1; }
+          [[ "$SSH_USER" =~ ^[A-Za-z0-9._-]+$ ]] || { echo "Invalid SSH user" >&2; exit 1; }
+          [[ -n "$SSH_KEY" ]] || { echo "No GreenGeeks SSH deploy key is available to this repository." >&2; exit 2; }
+
+      - name: Configure SSH
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          install -d -m 700 "$HOME/.ssh"
+          printf '%s\n' "$SSH_KEY" > "$HOME/.ssh/greengeeks_deploy"
+          chmod 600 "$HOME/.ssh/greengeeks_deploy"
+          ssh-keyscan -H -T 15 "$SSH_HOST" > "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/known_hosts"
+
+      - name: Dry-run destination checks
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          ssh -i "$HOME/.ssh/greengeeks_deploy" -o BatchMode=yes -o ConnectTimeout=15 "$SSH_USER@$SSH_HOST"             'set -eu
+             test -d /home/stepston/public_html/mentorandi
+             test -f /home/stepston/public_html/mentorandi/index.html
+             printf "Destination verified.\n"'
+
+      - name: Upload index only
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          scp -i "$HOME/.ssh/greengeeks_deploy" -o BatchMode=yes -o ConnectTimeout=15             index.html "$SSH_USER@$SSH_HOST:$DEST_FILE"
+
+      - name: Verify live login link
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          for i in 1 2 3 4 5; do
+            html="$(curl --fail --silent --show-error --max-time 20 "https://mentorandi.com/index.html?deploy=$GITHUB_SHA" || true)"
+            if printf '%s' "$html" | grep -q 'https://app.mentorandi.com/login'; then
+              echo "Live homepage contains Log in link."
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "Deployment completed, but live verification did not find the Log in link." >&2
+          exit 1
