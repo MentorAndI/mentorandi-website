@@ -30,7 +30,7 @@ rsync -av --checksum "$SRC" "greengeeks:$DEST"
 
 echo "Verifying live Log in link..."
 for i in 1 2 3 4 5; do
-  if curl --fail --silent --show-error --max-time 20     "https://mentorandi.com/index.html?deploy=$(date +%s)"     | grep -q 'https://app.mentorandi.com/login'; then
+  if curl --fail --silent --show-error --max-time 20     "https://mentorandi.com/index.html?deploy=$(date +%s)"     | grep -F 'https://app.mentorandi.com/login' >/dev/null; then
     echo "Success: live homepage contains Log in."
     exit 0
   fi
