@@ -52,6 +52,9 @@
   .nav-links{display:flex;align-items:center;gap:1.7rem}
   .nav-links a{font-size:.9rem;color:var(--text-dim);transition:color .25s var(--ease)}
   .nav-links a:hover{color:var(--ink)}
+  .nav-auth{display:flex;align-items:center;gap:.85rem;white-space:nowrap}
+  .nav-login{font-size:.88rem;font-weight:600;color:var(--ink);padding:.52rem .2rem;transition:color .25s var(--ease)}
+  .nav-login:hover{color:var(--accent-deep)}
   .nav-cta{font-size:.86rem;font-weight:600;color:#fff;background:var(--accent);padding:.55rem 1.1rem;border-radius:100px;transition:.3s var(--ease);white-space:nowrap;box-shadow:0 6px 16px rgba(188,91,56,0.28)}
   .nav-cta:hover{background:var(--accent-deep);box-shadow:0 8px 22px rgba(188,91,56,0.36);transform:translateY(-1px)}
   .nav-toggle{display:none;background:none;border:0;color:var(--ink);cursor:pointer;padding:.4rem}
@@ -294,7 +297,7 @@
   .reveal.in{opacity:1;transform:none}
 
   @media (max-width:900px){
-    .nav-links,.nav-cta{display:none}
+    .nav-links,.nav-auth{display:none}
     .nav-toggle{display:block}
     .hero{min-height:auto;padding-top:6.5rem}
     .hero-grid,.val-grid,.rmb-grid,.personal-grid{grid-template-columns:1fr;gap:2.6rem}
@@ -670,7 +673,10 @@
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a href="https://app.mentorandi.com/signup?plan=free" class="nav-cta">Start free</a>
+    <div class="nav-auth" aria-label="Account">
+      <a href="https://app.mentorandi.com/login" class="nav-login">Log in</a>
+      <a href="https://app.mentorandi.com/signup?plan=free" class="nav-cta">Start free</a>
+    </div>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5"/></svg>
     </button>
@@ -683,6 +689,7 @@
   <a href="#insights">Insights</a>
   <a href="#pricing">Pricing</a>
   <a href="#faq">FAQ</a>
+  <a href="https://app.mentorandi.com/login">Log in</a>
   <a href="https://app.mentorandi.com/signup?plan=free" class="btn btn-primary">Start free <span class="arr">→</span></a>
 </div>
 
